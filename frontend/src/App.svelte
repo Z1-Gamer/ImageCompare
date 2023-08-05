@@ -1,7 +1,7 @@
 <script lang="ts">
   import { CompareFiles, DebugMe } from "../wailsjs/go/main/App.js"
-  import EmptyImage from "./assets/images/BlankImageT2.png"
-  import EmptyResultImage from "./assets/images/BlankImageT3.png"
+  import EmptyImage from "./assets/images/BlankImage.png"
+  import EmptyResultImage from "./assets/images/BlankResultImage.png"
   import Modal from "svelte-simple-modal"
   import PopupManager from "./PopupManager.svelte"
 
