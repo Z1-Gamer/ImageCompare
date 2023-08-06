@@ -7,4 +7,8 @@ Currently supports png and jpeg.
 
 Built using [Wails](https://github.com/wailsapp/wails).  
 Frontend: Svelte  
-Backend: Go
+Backend: Go  
+  
+If you find my program useful you can buy me a coffee:  
+Ko-Fi: https://ko-fi.com/z1gamer  
+or crypto: https://coindrop.to/z1gamer
