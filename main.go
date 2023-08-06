@@ -17,10 +17,10 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title: "Image Compare",
-		Width: 750,
-		Height: 900,
-		MinWidth: 500,
+		Title:     "Image Compare",
+		Width:     750,
+		Height:    900,
+		MinWidth:  500,
 		MinHeight: 500,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
@@ -30,12 +30,10 @@ func main() {
 		Bind: []interface{}{
 			app,
 		},
-		
 	})
-	
 
 	if err != nil {
 		println("Error:", err.Error())
 	}
-	
+
 }

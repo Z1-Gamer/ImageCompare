@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/oshimoto/compare2images v0.0.0-20230803191159-32bc73e6eb93
 	github.com/wailsapp/wails/v2 v2.5.1
+	golang.org/x/image v0.5.0
 )
 
 require (

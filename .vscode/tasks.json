@@ -26,15 +26,7 @@
         }
       },
       "command": "go",
-      "args": [
-        "build",
-        "-tags",
-        "production,desktop",
-        "-gcflags",
-        "all=-N -l",
-        "-o",
-        "build/bin/CompareImagesWails.exe"
-      ]
+      "args": ["build", "-tags", "production,desktop", "-gcflags", "all=-N -l", "-o", "build/bin/ImageCompare.exe"]
     },
     {
       "label": "build debug",
@@ -61,15 +53,7 @@
         }
       },
       "command": "go",
-      "args": [
-        "build",
-        "-tags",
-        "production,desktop,debug",
-        "-gcflags",
-        "all=-N -l",
-        "-o",
-        "build/bin/CompareImagesWails.exe"
-      ]
+      "args": ["build", "-tags", "production,desktop,debug", "-gcflags", "all=-N -l", "-o", "build/bin/ImageCompare.exe"]
     },
     {
       "label": "build dev",
@@ -96,16 +80,7 @@
         }
       },
       "command": "go",
-      "args": [
-        "build",
-        "-tags",
-        "dev",
-        "-gcflags",
-        "all=-N -l",
-        "-o",
-        "build/bin/CompareImagesWails.exe"
-      ]
+      "args": ["build", "-tags", "dev", "-gcflags", "all=-N -l", "-o", "build/bin/ImageCompare.exe"]
     }
   ]
 }
-  

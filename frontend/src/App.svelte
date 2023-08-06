@@ -22,7 +22,7 @@
   var PopupHeight = 100
 
   // Image Variables
-  const AllowedImageTypes = ["image/png", "image/jpeg"]
+  const AllowedImageTypes = ["image/png", "image/jpeg", "image/webp"]
   var CurrentImage1: ImageBitmap
   var CurrentImage2: ImageBitmap
   var Image1Type: string
@@ -77,6 +77,7 @@
   // Disable file drop if the target is not either Canvas1 or Canvas2, and if the dragged items' type is not in the AloowedImageTypes.
   document.addEventListener("dragover", function (event) {
     event.preventDefault()
+    console.log(event.dataTransfer.items[0].type)
     let dtarget = event.target as Element
     if ((dtarget.id != "Canvas1" && dtarget.id != "Canvas2") || !AllowedImageTypes.includes(event.dataTransfer.items[0].type)) {
       event.dataTransfer.dropEffect = "none"
