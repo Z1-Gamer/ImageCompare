@@ -22,7 +22,7 @@
   var PopupHeight = 100
 
   // Image Variables
-  const AllowedImageTypes = ["image/png", "image/jpeg", "image/webp"]
+  const AllowedImageTypes = ["image/png", "image/jpeg", "image/webp", "image/bmp"]
   var CurrentImage1: ImageBitmap
   var CurrentImage2: ImageBitmap
   var Image1Type: string

@@ -9,6 +9,7 @@ import (
 	"image/jpeg"
 	"image/png"
 
+	"golang.org/x/image/bmp"
 	"golang.org/x/image/webp"
 
 	comp "github.com/oshimoto/compare2images"
@@ -47,34 +48,23 @@ func (a *App) CompareFiles(Image1B64 string, Image2B64 string, Image1Type string
 
 	// Switch depending on image type
 	switch Image1Type {
-	case "image/png":
-		{
-			Image1ByteNumber = 22
-			break
-		}
+	case "image/png", "image/bmp":
+		Image1ByteNumber = 22
 	case "image/jpeg", "image/webp":
-		{
-			Image1ByteNumber = 23
-			break
-		}
+		Image1ByteNumber = 23
 	}
+
 	switch Image2Type {
-	case "image/png":
-		{
-			Image2ByteNumber = 22
-			break
-		}
+	case "image/png", "image/bmp":
+		Image2ByteNumber = 22
 	case "image/jpeg", "image/webp":
-		{
-			Image2ByteNumber = 23
-			break
-		}
+		Image2ByteNumber = 23
 	}
 
 	//Get the WebApi File Blob data prefix to be spliced back later
 	B64Prefix := Image1B64[0:Image1ByteNumber]
 
-	// Decode the Base64
+	// Decode the Base64 to bytes
 	image1Byte, err := base64.StdEncoding.DecodeString(Image1B64[Image1ByteNumber:])
 	if err != nil {
 		fmt.Println("Image 1 Base64 Decoding Error:", err)
@@ -94,67 +84,63 @@ func (a *App) CompareFiles(Image1B64 string, Image2B64 string, Image1Type string
 
 	switch Image1Type {
 	case "image/png":
-		{
-			Image1, err = png.Decode(bufimg1)
-			if err != nil {
-				fmt.Println("Image 1 Decoding Error:", err)
-			} else {
-				fmt.Println("Image 1 Decoded Successfully")
-			}
-			break
+		Image1, err = png.Decode(bufimg1)
+		if err != nil {
+			fmt.Println("Image 1 Decoding Error:", err)
+		} else {
+			fmt.Println("Image 1 Decoded Successfully")
 		}
 	case "image/jpeg":
-		{
-			Image1, err = jpeg.Decode(bufimg1)
-			if err != nil {
-				fmt.Println("Image 1 Decoding Error:", err)
-			} else {
-				fmt.Println("Image 1 Decoded Successfully")
-			}
-			break
+		Image1, err = jpeg.Decode(bufimg1)
+		if err != nil {
+			fmt.Println("Image 1 Decoding Error:", err)
+		} else {
+			fmt.Println("Image 1 Decoded Successfully")
 		}
 	case "image/webp":
-		{
-			Image1, err = webp.Decode(bufimg1)
-			if err != nil {
-				fmt.Println("Image 1 Decoding Error:", err)
-			} else {
-				fmt.Println("Image 1 Decoded Successfully")
-			}
-			break
+		Image1, err = webp.Decode(bufimg1)
+		if err != nil {
+			fmt.Println("Image 1 Decoding Error:", err)
+		} else {
+			fmt.Println("Image 1 Decoded Successfully")
+		}
+	case "image/bmp":
+		Image1, err = bmp.Decode(bufimg1)
+		if err != nil {
+			fmt.Println("Image 1 Decoding Error:", err)
+		} else {
+			fmt.Println("Image 1 Decoded Successfully")
 		}
 	}
 
 	switch Image2Type {
 	case "image/png":
-		{
-			Image2, err = png.Decode(bufimg2)
-			if err != nil {
-				fmt.Println("Image 2 Decoding Error:", err)
-			} else {
-				fmt.Println("Image 2 Decoded Successfully")
-			}
-			break
+		Image2, err = png.Decode(bufimg2)
+		if err != nil {
+			fmt.Println("Image 2 Decoding Error:", err)
+		} else {
+			fmt.Println("Image 2 Decoded Successfully")
 		}
 	case "image/jpeg":
-		{
-			Image2, err = jpeg.Decode(bufimg2)
-			if err != nil {
-				fmt.Println("Image 2 Decoding Error:", err)
-			} else {
-				fmt.Println("Image 2 Decoded Successfully")
-			}
-			break
+		Image2, err = jpeg.Decode(bufimg2)
+		if err != nil {
+			fmt.Println("Image 2 Decoding Error:", err)
+		} else {
+			fmt.Println("Image 2 Decoded Successfully")
 		}
 	case "image/webp":
-		{
-			Image2, err = webp.Decode(bufimg2)
-			if err != nil {
-				fmt.Println("Image 2 Decoding Error:", err)
-			} else {
-				fmt.Println("Image 2 Decoded Successfully")
-			}
-			break
+		Image2, err = webp.Decode(bufimg2)
+		if err != nil {
+			fmt.Println("Image 2 Decoding Error:", err)
+		} else {
+			fmt.Println("Image 2 Decoded Successfully")
+		}
+	case "image/bmp":
+		Image2, err = bmp.Decode(bufimg2)
+		if err != nil {
+			fmt.Println("Image 2 Decoding Error:", err)
+		} else {
+			fmt.Println("Image 2 Decoded Successfully")
 		}
 	}
 
@@ -175,8 +161,8 @@ func (a *App) CompareFiles(Image1B64 string, Image2B64 string, Image1Type string
 	} else {
 		fmt.Println("Image Encoded Successfully")
 	}
-	PercentDiff := 100 - CompResult.Percent
 	ResultImageB64 := base64.StdEncoding.EncodeToString(buff.Bytes())
+	PercentDiff := 100 - CompResult.Percent
 
 	return Results{B64Prefix + ResultImageB64, PercentDiff}
 }
