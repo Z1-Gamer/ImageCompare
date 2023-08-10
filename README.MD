@@ -3,8 +3,8 @@ Pixels with the same color values are shown in green, and different ones are sho
 
 ![Screenshot](/screenshots/mainwindow.png?raw=true)
 
-Usage: Just drag and drop two images you would like to compare and click the "Compare" button.
-Currently supports png, jpeg and webp.
+Usage: Just drag and drop two images you would like to compare and click the "Compare" button.  
+Currently supports png, jpeg, webp and bmp.
 
 Built using [Wails](https://github.com/wailsapp/wails).  
 Frontend: Svelte  
